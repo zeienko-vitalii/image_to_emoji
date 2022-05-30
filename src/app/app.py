@@ -30,7 +30,9 @@ class MainWidget(QWidget):
             self.convert_image_to_emoji_by_scale,
             self.imageWidget.show_converted_emojis,
             self.imageToEmoji.convert_image_to_emoji,
-            self.imageToEmoji.arr_to_string)
+            self.imageToEmoji.arr_to_string,
+            self.imageToEmoji.setShadowsFromString,
+        )
 
     def update_image_path(self, path: str):
         self.imageToEmoji.path = path

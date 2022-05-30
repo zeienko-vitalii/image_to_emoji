@@ -6,8 +6,20 @@ import cv2
 
 
 class ImageToEmoji():
+    defaultShadows = ['🫥', '🖤', '🤎', '💜', '💙', '🧡',
+                      '❤️', '💚', '💖', '💛', '😊', '🤍', '❤️‍🔥',
+                      ]
+    shadows = defaultShadows
+
     def __init__(self, path: str = None):
         self.path = path
+
+    def setShadowsFromString(self, shadowsStr: str):
+        if shadowsStr:
+            self.shadows = shadowsStr.split(',')
+        else:
+            self.shadows = self.defaultShadows
+        print(self.shadows)
 
     def rand_arr(size):
         return np.random.randint(0, 256, size*size)
@@ -25,11 +37,9 @@ class ImageToEmoji():
 
     def shadow_by_level(self, level):
         # shadows = ['😁', '🫠', '🥶', '😊', '🙂', '👨‍💻', '🫥']
-        shadows = ['🫥', '🖤', '🤎', '💜', '💙', '🧡',
-                   '❤️', '💚', '💖', '💛', '😊', '🤍', '❤️‍🔥', ]
         # shadows = ['💣', '💥', '🍑', '❤️', '😏', '🔥']
-        part = 1 / len(shadows)
-        return {self.shadow_key(i, level, part, len(shadows)): shadows[i] for i in range(len(shadows))}[True]
+        part = 1 / len(self.shadows)
+        return {self.shadow_key(i, level, part, len(self.shadows)): self.shadows[i] for i in range(len(self.shadows))}[True]
 
     def shadow_key(self, index, level, part, size):
         if index == 0:

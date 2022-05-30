@@ -36,7 +36,7 @@ class ImageWidget(QWidget):
         self.label = QLabel()
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         # self.label.setText(huge_text)
-        self.label.setText("Drag'n'Drop an image or picture.\nSet ")
+        self.label.setText("Drag'n'Drop an image or picture.")
         self._set_scroll_widget(self.label)
 
     def show_converted_emojis(self, convertedImageToEmoji: str, fontSize: int = 5):
@@ -78,7 +78,7 @@ class ImageWidget(QWidget):
                     self.__setImageByPath(path)
 
     def __contains_image(self, path: str) -> bool:
-        for el in ['.png', '.jpg', '.jpeg']:
+        for el in ['.png', '.jpg', '.jpeg', '.webp']:
             if el in path:
                 return True
         return False
